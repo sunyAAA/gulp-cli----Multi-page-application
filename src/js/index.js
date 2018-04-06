@@ -1,5 +1,11 @@
-var util = require('./models/util')
+var banner = require('./models/banner')
 
-util.do()
-
-console.log('index')
+banner.img_urls = [
+  '../static/images/5.jpg',
+  '../static/images/6.jpg',
+  '../static/images/7.jpg',
+  '../static/images/8.jpg',
+]
+banner.init()
+// setInterval(banner.prev.bind(banner),2000)
+// banner.play()
