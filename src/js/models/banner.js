@@ -29,7 +29,7 @@ var banner = {
 
     $('.banner ol').css('width', count * 20 + 'px').css('margin-left', -count * 20 * 0.5 - 10 + 'px');
     var self = this;
-    $('.banner ol li').mouseover(function () { //用hover的话会有两个事件(鼠标进入和离开)
+    $('.banner ol li').click(function () { //用hover的话会有两个事件(鼠标进入和离开)
       console.log(this)
       $(this).addClass('current').siblings().removeClass('current');
       //获取当前编号

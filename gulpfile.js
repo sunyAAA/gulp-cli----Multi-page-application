@@ -5,11 +5,30 @@ var nib = require('nib')
 var csso = require('gulp-csso')
 var uglify = require('gulp-uglify')
 var babel = require('gulp-babel')
+var minimist = require('minimist')
+var rename = require('gulp-rename')
+var include = require('gulp-file-include')
 
 var browserify = require('browserify')
 var through2 = require('through2')
 
 var connect = require('gulp-connect')
+
+var knownOptions = {
+  string: 'name',
+  default: { name: process.env.NODE_ENV || 'template' }
+};
+
+var options = minimist(process.argv.slice(2), knownOptions);
+
+gulp.task('mkFile',function(){
+  console.log(options.name)
+  gulp.src('./src/template.html')
+    .pipe(include())
+    .pipe(rename(options.name+'.html'))
+    .pipe(gulp.dest('./dist'))
+    
+})
 
 
 //   stylus 编译压缩
